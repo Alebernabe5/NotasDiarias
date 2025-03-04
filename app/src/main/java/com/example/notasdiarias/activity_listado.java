@@ -48,12 +48,15 @@ public class activity_listado extends AppCompatActivity {
 
     }
 
+    //MENU
+    //Este codigo indica que me quiero asociar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_listado, menu);
         return true;
     }
+    //Funcionalidad al menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection.

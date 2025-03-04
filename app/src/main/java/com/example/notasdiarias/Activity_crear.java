@@ -1,5 +1,6 @@
 package com.example.notasdiarias;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,9 @@ public class Activity_crear extends AppCompatActivity {
     protected EditText caja1;
     protected Button boton1, boton2;
     protected String contenidoCaja1="";
+    protected DataBaseSQL gdb;
+    protected Intent pasarPantalla;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,18 @@ public class Activity_crear extends AppCompatActivity {
         boton1 = (Button) findViewById(R.id.boton1_crear);  //Boton de atras
         boton2 = (Button) findViewById(R.id.boton2_crear);  //Boton de crear
 
+        //Inicializar la BD
+        gdb = new DataBaseSQL(this);
+
+        //BOTON VOLVER
+        boton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pasarPantalla = new Intent(Activity_crear.this, activity_listado.class); //Paso de pantalla a listado
+                startActivity(pasarPantalla);
+            }
+        });
+
         //BOTON DE CREAR
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,12 +60,23 @@ public class Activity_crear extends AppCompatActivity {
                 contenidoCaja1 = caja1.getText().toString();
                 if(contenidoCaja1.equalsIgnoreCase(""))
                 {
-                    Toast.makeText(Activity_crear.this, "Debes rellenar caja de texto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_crear.this, "Nota obligatoria", Toast.LENGTH_SHORT).show();
 
                 }
                 else
                 {
                     caja1.setText(""); //Borro el contenido de la caja
+                   if (gdb.insertarNota(contenidoCaja1))
+                   {
+                       Toast.makeText(Activity_crear.this, "Nota creada correctamente", Toast.LENGTH_SHORT).show();
+                       pasarPantalla = new Intent(Activity_crear.this, activity_listado.class); //Paso de pantalla a listado
+                       startActivity(pasarPantalla);
+                   }
+                   else
+                   {
+                       Toast.makeText(Activity_crear.this, "No se ha podido añadir la nota", Toast.LENGTH_SHORT).show();
+                                          }
+
                 }
             }
         });

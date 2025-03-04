@@ -21,11 +21,9 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE notas (id INTEGER PRIMARY KEY AUTOINCREMENT, nota TEXT)"); //Consulta crear tabla notas
 
         //Ejecuciones de muestra para tener en BBDD
-        db.execSQL("INSERT INTO notas VALUES(null,'nota ej 1')");
-        db.execSQL("INSERT INTO notas VALUES(null,'nota ej 2')");
-        db.execSQL("INSERT INTO notas VALUES(null,'nota ej 3')");
-
-
+        //db.execSQL("INSERT INTO notas VALUES(null,'nota ej 1')");
+        //db.execSQL("INSERT INTO notas VALUES(null,'nota ej 2')");
+        //db.execSQL("INSERT INTO notas VALUES(null,'nota ej 3')");
     }
 
     @Override
@@ -33,6 +31,19 @@ public class DataBaseSQL extends SQLiteOpenHelper {
 
     }
 
+    //INSERTAR PRODUCTO
+    public boolean insertarNota (String nota)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (!existeNotas(nota))
+        {
+            db.execSQL("INSERT INTO notas VALUES(null,'"+nota+"')");
+            return true;
+        }
+        return false;
+       }
+
+    //OBTENER NOTAS
     public ArrayList<String> obtenerNotas()
     {
         ArrayList<String> notas= new ArrayList<String>();
@@ -51,9 +62,23 @@ public class DataBaseSQL extends SQLiteOpenHelper {
                 cur.moveToNext();
             }
         }
-
-
         return notas;
+    }
+
+    //EXISTE NOTAS
+    public boolean existeNotas(String nota)
+    {
+        SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
+        Cursor cur = db.rawQuery("SELECT * FROM notas WHERE nota='"+nota+"'",null);
+
+        if (cur!=null)
+        {
+            cur.moveToLast(); //Me pongo en primera posic
+            if (cur.getCount()>0) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
