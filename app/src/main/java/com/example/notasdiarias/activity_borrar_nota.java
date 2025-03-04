@@ -1,6 +1,7 @@
 package com.example.notasdiarias;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class activity_borrar_nota extends AppCompatActivity {
+
+    protected Button boton1, boton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +23,9 @@ public class activity_borrar_nota extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        boton1 = (Button) findViewById(R.id.boton1_borrarNota);
+        boton2 = (Button) findViewById(R.id.boton2_borrarNota);
+
     }
 }

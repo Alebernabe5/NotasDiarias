@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tt= new TimerTask() {
             @Override
             public void run() {
-                pasarPantalla = new Intent(MainActivity.this, Activity_listado.class); //Paso de pantalla a listado
+                pasarPantalla = new Intent(MainActivity.this, activity_listado.class); //Paso de pantalla a listado
                 startActivity(pasarPantalla);
             }
         };
