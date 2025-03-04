@@ -46,6 +46,12 @@ public class activity_listado extends AppCompatActivity {
         adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listaNotas);
         lista1.setAdapter(adaptador);
 
+        //Actualizar lista de notas
+        adaptador.clear();
+        listaNotas = gdb.obtenerNotas();
+        adaptador.addAll(listaNotas);
+        adaptador.notifyDataSetChanged();
+
     }
 
     //MENU

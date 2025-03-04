@@ -3,6 +3,7 @@ package com.example.notasdiarias;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class Activity_crear extends AppCompatActivity {
     protected String contenidoCaja1="";
     protected DataBaseSQL gdb;
     protected Intent pasarPantalla;
+    protected ArrayAdapter<String> adaptador;
 
 
     @Override
@@ -69,6 +71,8 @@ public class Activity_crear extends AppCompatActivity {
                    if (gdb.insertarNota(contenidoCaja1))
                    {
                        Toast.makeText(Activity_crear.this, "Nota creada correctamente", Toast.LENGTH_SHORT).show();
+
+                       //pasar pantalla a listado
                        pasarPantalla = new Intent(Activity_crear.this, activity_listado.class); //Paso de pantalla a listado
                        startActivity(pasarPantalla);
                    }
