@@ -16,7 +16,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#CA0909"
-        android:text="Borrar todas las notas"
+        android:text="@string/string_boton1_borrarNota"
+        android:textColor="#F6F2F2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +30,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#076BC8"
-        android:text="Volver"
+        android:text="@string/string_boton2_borrarNota"
+        android:textColor="#F6F2F2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/boton1_borrarNota" />

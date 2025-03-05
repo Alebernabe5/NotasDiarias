@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">DailyNotes</string>
+
+    <!--mainActivity-->
+    <string name="string_texto1_main">Little Notes</string>
+    <!--CrearActiviy-->
+    <string name="string_texto1_crear">Write a note:</string>
+    <string name="string_caja1_crear">Write your note here</string>
+    <string name="string_boton1_crear">Back</string>
+    <string name="string_boton2_crear">Create</string>
+
+    <string name="string_codigo_nota">Note required</string>
+    <string name="string_codigo_nota_creada">Note created successfully</string>
+    <string name="string_codigo_nota_noAnadida">The note could not be added</string>
+
+    <!--VerNotaActiviy-->
+    <string name="string_texto1_verNota">Note information:</string>
+    <string name="string_boton1_verNota">Back</string>
+    <string name="string_boton2_verNota">Delete</string>
+
+    <string name="string_codigo_verNota_noPaquetes">No packages received</string>
+    <string name="string_codigo_verNota_notaBorrada">Note deleted successfully</string>
+    <string name="string_codigo_verNota_notaNoBorrada">The note could not be deleted</string>
+
+    <!--BorrarNotaActiviy-->
+    <string name="string_boton1_borrarNota">Delete all notes</string>
+    <string name="string_boton2_borrarNota">Back</string>
+
+    <string name="string_codigo_borrarNota">All notes have been deleted</string>
+</resources>

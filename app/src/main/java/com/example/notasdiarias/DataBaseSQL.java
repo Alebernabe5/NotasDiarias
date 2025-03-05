@@ -31,7 +31,28 @@ public class DataBaseSQL extends SQLiteOpenHelper {
 
     }
 
-    //INSERTAR PRODUCTO
+    //BORRAR NOTA
+    public boolean borrarNota (String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM notas WHERE id="+id);
+
+        if (existeIdNotas(id))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    //BORRAR TODAS LAS NOTAS
+    public void borrarTodasLasNota ()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM notas WHERE id>=0");
+
+    }
+
+    //INSERTAR NOTA
     public boolean insertarNota (String nota)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -42,6 +63,28 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         }
         return false;
        }
+
+
+    //OBTENER NOTA
+    public Nota obtenerNota(String id)
+    {
+        Nota not;
+
+        if (existeIdNotas(id)) {
+            SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
+            Cursor cur = db.rawQuery("SELECT * FROM notas WHERE id=" + id, null);
+
+            if (cur != null) {
+                cur.moveToFirst(); //Me pongo en primera posic
+                //Crear objeto con los constructores y los valores que hemos obtenido de la consulta
+                not = new Nota(cur.getInt(0), cur.getString(1));
+                return not;
+
+            }
+        }
+
+        return null;
+    }
 
     //OBTENER NOTAS
     public ArrayList<String> obtenerNotas()
@@ -70,6 +113,23 @@ public class DataBaseSQL extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
         Cursor cur = db.rawQuery("SELECT * FROM notas WHERE nota='"+nota+"'",null);
+
+        if (cur!=null)
+        {
+            cur.moveToLast(); //Me pongo en primera posic
+            if (cur.getCount()>0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //EXISTE ID NOTAS
+
+    public boolean existeIdNotas(String id)
+    {
+        SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
+        Cursor cur = db.rawQuery("SELECT * FROM notas WHERE id='"+id+"'",null);
 
         if (cur!=null)
         {

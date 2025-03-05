@@ -62,7 +62,7 @@ public class Activity_crear extends AppCompatActivity {
                 contenidoCaja1 = caja1.getText().toString();
                 if(contenidoCaja1.equalsIgnoreCase(""))
                 {
-                    Toast.makeText(Activity_crear.this, "Nota obligatoria", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Activity_crear.this, getString(R.string.string_codigo_nota), Toast.LENGTH_SHORT).show();
 
                 }
                 else
@@ -70,7 +70,7 @@ public class Activity_crear extends AppCompatActivity {
                     caja1.setText(""); //Borro el contenido de la caja
                    if (gdb.insertarNota(contenidoCaja1))
                    {
-                       Toast.makeText(Activity_crear.this, "Nota creada correctamente", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(Activity_crear.this, getString(R.string.string_codigo_nota_creada), Toast.LENGTH_SHORT).show();
 
                        //pasar pantalla a listado
                        pasarPantalla = new Intent(Activity_crear.this, activity_listado.class); //Paso de pantalla a listado
@@ -78,8 +78,8 @@ public class Activity_crear extends AppCompatActivity {
                    }
                    else
                    {
-                       Toast.makeText(Activity_crear.this, "No se ha podido añadir la nota", Toast.LENGTH_SHORT).show();
-                                          }
+                       Toast.makeText(Activity_crear.this, getString(R.string.string_codigo_nota_noAnadida), Toast.LENGTH_SHORT).show();
+                   }
 
                 }
             }

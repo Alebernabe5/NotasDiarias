@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">NotesDiàries</string>
+
+    <!--mainActivity-->
+    <string name="string_texto1_main">Notetes</string>
+    <!--CrearActiviy-->
+    <string name="string_texto1_crear">Escriu una nota:</string>
+    <string name="string_caja1_crear">Escriu aquí la teva nota</string>
+    <string name="string_boton1_crear">Tornar</string>
+    <string name="string_boton2_crear">Crear</string>
+
+    <string name="string_codigo_nota">Nota obligatòria</string>
+    <string name="string_codigo_nota_creada">Nota creada correctament</string>
+    <string name="string_codigo_nota_noAnadida">No sha pogut afegir la nota</string>
+
+    <!--VerNotaActiviy-->
+    <string name="string_texto1_verNota">Informació de la nota:</string>
+    <string name="string_boton1_verNota">Tornar</string>
+    <string name="string_boton2_verNota">Esborrar</string>
+
+    <string name="string_codigo_verNota_noPaquetes">No shan rebut paquets</string>
+    <string name="string_codigo_verNota_notaBorrada">Nota esborrada correctament</string>
+    <string name="string_codigo_verNota_notaNoBorrada">No sha pogut esborrar la nota</string>
+
+    <!--BorrarNotaActiviy-->
+    <string name="string_boton1_borrarNota">Esborrar totes les notes</string>
+    <string name="string_boton2_borrarNota">Tornar</string>
+
+    <string name="string_codigo_borrarNota">Shan esborrat totes les notes</string>
+</resources>

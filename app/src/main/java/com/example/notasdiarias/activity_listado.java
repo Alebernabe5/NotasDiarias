@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +28,8 @@ public class activity_listado extends AppCompatActivity {
     protected ArrayList<String> listaNotas = new ArrayList<String>();
     protected ArrayAdapter<String> adaptador;
     protected Intent pasarPantalla;
+    protected String contenidoItem ="";
+    protected String [] partes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,22 @@ public class activity_listado extends AppCompatActivity {
         listaNotas = gdb.obtenerNotas();
         adaptador.addAll(listaNotas);
         adaptador.notifyDataSetChanged();
+        
+        //Crear evento para ir al item
+        lista1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+              contenidoItem = adapterView.getItemAtPosition(i).toString();
+
+                partes = contenidoItem.split(".-");
+                //Toast.makeText(activity_listado.this, " partes:" + partes[0]+ "----"+ partes[1], Toast.LENGTH_SHORT).show();
+                //Paso pantalla con envio de paquetes
+                pasarPantalla = new Intent(activity_listado.this,activity_ver_nota.class);
+                pasarPantalla.putExtra("ID", partes[0]);
+                startActivity(pasarPantalla);
+            }
+        });
 
     }
 
